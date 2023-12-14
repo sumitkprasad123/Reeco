@@ -1,5 +1,7 @@
 import React from 'react';
 import "./navbar.scss";
+import { FaAngleDown } from "react-icons/fa6";
+import { BsCart4 } from "react-icons/bs";
 
 const Navbar = () => {
   return (
@@ -12,9 +14,10 @@ const Navbar = () => {
                 <span className="menu">Analytics</span>
             </div>
             <div className="nav_right">
-                <span className="cart_logo"></span>
+                <BsCart4 className="cart_logo"/>
                 <div className="user_profile">
-                    <span className="user_name">Hello james</span>
+                    <span className="user_name">Hello, james</span>
+                    <FaAngleDown/>
                 </div>
             </div>
         </div>
