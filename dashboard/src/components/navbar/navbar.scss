@@ -1,0 +1,38 @@
+.navbar{
+    // border:1px solid black;
+    background-color:#013914;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    .container{
+        border:1px solid black;
+        width:1400px;
+        display: flex;
+        // align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+
+        .nav_left{
+            border:1px solid black;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .logo{
+                color:white;
+                font-size:30px;
+                font-weight: bolder;
+            }
+            .menu{
+                color:white;
+                font-size:18px;
+            }
+        }
+
+        .nav_right{
+            border:1px solid black;
+            display: flex;
+        }
+    }
+}
