@@ -113,6 +113,9 @@
                             th {
                                 text-align: left;
                                 width: 100px;
+                                &:nth-child(1) {
+                                    width: 50px;
+                                 }
                                 &:nth-child(2) {
                                     width: 250px;
                                  }
@@ -122,6 +125,9 @@
                             }
                             td {
                                 width: 100px;
+                                &:nth-child(1) {
+                                    width: 50px;
+                                 }
                                 &:nth-child(2) {
                                     width: 250px;
                                  }
@@ -137,15 +143,7 @@
                             .option{
                                 display: flex;
                                 justify-content: space-between;
-                                button{
-                                    max-width: max-content;
-                                    border: 1px solid #045822;
-                                    color:#045822;
-                                    background-color: transparent;
-                                    padding: 8px 15px;
-                                    border-radius: 30px;
-                                    font-size: 16px;
-                                }
+                               
                                 .change_option{
                                     display: flex;
                                     align-items: center;
@@ -160,5 +158,33 @@
                 }
             }
         }
+    }
+}
+
+
+.modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+    padding: 20px;
+
+    .modal_title{
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .modal_close{
+            font-size: 23px;
+            cursor: pointer;
+        }
+    }
+
+    .modal_option{
+        display: flex;
+        align-self: flex-end;
+        gap:20px;
+        cursor: pointer;
     }
 }

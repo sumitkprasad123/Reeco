@@ -5,17 +5,66 @@ import { CiIceCream } from "react-icons/ci";
 import { LuMilk } from "react-icons/lu";
 import { IoSearchOutline } from "react-icons/io5";
 import { GrPrint } from "react-icons/gr";
-
-import { FaCheck } from "react-icons/fa6";
 import { MdOutlineClose } from "react-icons/md";
 
+import  { useState } from 'react';
+import Modal from '../modal/modal';
+import OrderItem from '../order-item/OrderItem';
+import {useSelector,useDispatch} from "react-redux";
+import { editSuccess } from '../../redux/action';
+
 const Order = () => {
+  const [changeData,setChangeData] = useState({})  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const data = useSelector((store) => store.data)
+  const dispatch = useDispatch()
+
+// handle the modal
+  const handleOpenModal = (item) => {
+    setIsModalOpen(true);
+    setChangeData(item)
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleYes = () => {
+    let obj = {...changeData,"Status":"Missing Urgent"}
+    dispatch(editSuccess(obj));
+    setIsModalOpen(false);
+  }
+  const handleNo = () => {
+    let obj = {...changeData,"Status":"Missing"}
+    dispatch(editSuccess(obj));
+    setIsModalOpen(false);
+  }
+//   console.log({"d":data})
   return (
+    <>
+     {
+       isModalOpen && (
+            <Modal>
+                <div className="modal">
+                    <div className="modal_title">
+                        <h2>Missing Product</h2>
+                        <MdOutlineClose className="modal_close" onClick={handleCloseModal}>Close Modal</MdOutlineClose>
+                    </div>
+                    <span>Is "Chicken Breast Fillets, Boneless..." urgent?</span>
+                    <div className="modal_option">
+                        <span onClick={handleNo}>No</span>
+                        <span onClick={handleYes}>Yes</span>
+                    </div>
+                </div>
+            </Modal>
+        )
+    }
     <div className="order">
         <div className="container">
             <div className="order_top">
                 <div className="order_summary">
-                    <span>Suppilier</span>
+                    <span>Supplier</span>
                     <h3>East coast fruits & vegatables</h3>
                 </div>
                 <div className="order_summary">
@@ -76,124 +125,20 @@ const Order = () => {
                                 <th>Total</th>
                                 <th>Status</th>
                             </tr>
-                            <tr>
-                                <td>
-                                    <img
-                                        className="image"
-                                        src="./apple.png"
-                                        alt=""
-                                    />
-                                </td>
-                                <td>Chicken Breast Fillets,Boneless Marinated 6 Ounce Raw, Invivid </td>
-                                <td>American Roland</td>
-                                <td>$ 60.67 /6+1LB</td>
-                                <td>0x6+ 1LB</td>
-                                <td>0</td>
-                                <td className='option'>
-                                    <button>Quantity updated</button>
-                                    <div className="change_option">
-                                        <FaCheck className="check"/>
-                                        <MdOutlineClose className="close" />
-                                        <span>Edit</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img
-                                        className="image"
-                                        src="./apple.png"
-                                        alt=""
-                                    />
-                                </td>
-                                <td>Chicken Breast Fillets,Boneless Marinated 6 Ounce Raw, Invivid </td>
-                                <td>American Roland</td>
-                                <td>$ 60.67 /6+1LB</td>
-                                <td>0x6+ 1LB</td>
-                                <td>0</td>
-                                <td className='option'>
-                                    <button>Quantity updated</button>
-                                    <div className="change_option">
-                                        <FaCheck className="check"/>
-                                        <MdOutlineClose className="close" />
-                                        <span>Edit</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img
-                                        className="image"
-                                        src="./apple.png"
-                                        alt=""
-                                    />
-                                </td>
-                                <td>Chicken Breast Fillets,Boneless Marinated 6 Ounce Raw, Invivid </td>
-                                <td>American Roland</td>
-                                <td>$ 60.67 /6+1LB</td>
-                                <td>0x6+ 1LB</td>
-                                <td>0</td>
-                                <td className='option'>
-                                    <button>Quantity updated</button>
-                                    <div className="change_option">
-                                        <FaCheck className="check"/>
-                                        <MdOutlineClose className="close" />
-                                        <span>Edit</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img
-                                        className="image"
-                                        src="./apple.png"
-                                        alt=""
-                                    />
-                                </td>
-                                <td>Chicken Breast Fillets,Boneless Marinated 6 Ounce Raw, Invivid </td>
-                                <td>American Roland</td>
-                                <td>$ 60.67 /6+1LB</td>
-                                <td>0x6+ 1LB</td>
-                                <td>0</td>
-                                <td className='option'>
-                                    <button>Quantity updated</button>
-                                    <div className="change_option">
-                                        <FaCheck className="check"/>
-                                        <MdOutlineClose className="close" />
-                                        <span>Edit</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img
-                                        className="image"
-                                        src="./apple.png"
-                                        alt=""
-                                    />
-                                </td>
-                                <td>Chicken Breast Fillets,Boneless Marinated 6 Ounce Raw, Invivid </td>
-                                <td>American Roland</td>
-                                <td>$ 60.67 /6+1LB</td>
-                                <td>0x6+ 1LB</td>
-                                <td>0</td>
-                                <td className='option'>
-                                    <button>Quantity updated</button>
-                                    <div className="change_option">
-                                        <FaCheck className="check"/>
-                                        <MdOutlineClose className="close" />
-                                        <span>Edit</span>
-                                    </div>
-                                </td>
-                            </tr>
-                           
-                            
+                            {data && data.map((el) => {
+                                return <OrderItem
+                                   key={el.id}
+                                   handleOpenModal={handleOpenModal}
+                                   item={el}
+                                 /> 
+                            })}                            
                         </table>      
                    </div>
                 </div>
             </div>
         </div>
     </div>
+ </>
   )
 }
 
